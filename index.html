@@ -56,18 +56,18 @@
         .w-num { font-family: 'Cinzel'; font-size: 1.3rem; letter-spacing: 7px; font-weight: 900; margin: 0; }
         .d-name { font-size: 0.9rem; letter-spacing: 4px; text-transform: uppercase; margin: 5px 0 0 0; opacity: 0.6; color: #333; }
 
-        /* 🟢 ХООЛНЫ НЭР - ХАР ӨНГӨТЭЙ БӨГӨӨД БАЙРШИЛ ЗАСВАР */
+        /* ХООЛНЫ НЭР */
         .f-name { 
-            position: relative; margin-top: 20px; z-index: 250;
-            font-size: 1.1rem; font-weight: 700; color: #000; 
+            position: relative; margin-top: 15px; z-index: 250;
+            font-size: 1.05rem; font-weight: 700; color: #000; 
             max-width: 320px; line-height: 1.3; text-align: center;
         }
 
-        /* 🟢 ХООЛНЫ ЗУРАГ - ГОЛЛУУЛСАН */
+        /* ХООЛНЫ ЗУРАГ */
         .food-wrap { 
             position: relative; width: 100%; flex: 1; 
             display: flex; flex-direction: column; justify-content: center; align-items: center; 
-            z-index: 150; margin-top: 0; opacity: 0; transform: scale(0.85); 
+            z-index: 150; margin-top: -10px; opacity: 0; transform: scale(0.85); 
             transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.4s; 
         }
         .swiper-slide-active .food-wrap { opacity: 1; transform: scale(1); }
@@ -78,13 +78,14 @@
         .cal-badge { position: absolute; right: 5%; bottom: 15%; z-index: 200; font-size: 0.75rem; font-weight: 800; letter-spacing: 1px; padding: 6px 15px; background: rgba(255,255,255,0.9); border-radius: 50px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 1px solid #eee; opacity: 0; transform: translateX(20px); transition: 0.6s ease 0.8s; }
         .swiper-slide-active .cal-badge { opacity: 1; transform: translateX(0); }
 
-        /* 🟢 GLASS PANEL - ДООШЛУУЛСАН */
+        /* 🟢 GLASS PANEL - ДЭЭШЛҮҮЛСЭН (ЗАСВАР) */
         .glass-panel { 
             width: 95%; max-width: 420px; padding: 20px; 
             background: var(--glass); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); 
             border: 1px solid var(--border); border-radius: 35px; 
-            margin-top: 10px; z-index: 10; text-align: center; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.05); margin-bottom: 25px; 
+            margin-top: -45px; /* Карт хэсгийг дээшлүүлсэн */
+            z-index: 10; text-align: center; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05); margin-bottom: 45px; 
             opacity: 0; transform: translateY(30px); transition: 0.8s ease 0.6s; 
         }
         .swiper-slide-active .glass-panel { opacity: 1; transform: translateY(0); }
@@ -118,6 +119,7 @@
     <canvas id="canvas-snow"></canvas>
     <div id="customToast">Хүлээн авлаа. Баярлалаа!</div>
 
+    <!-- Splash Screen -->
     <div id="splash">
         <div class="logo-container">
             <img src="logo.png" class="logo-img">
@@ -128,6 +130,7 @@
         </div>
     </div>
 
+    <!-- Week Selector -->
     <div id="weekSelector">
         <h2 style="font-family:'Cinzel'; margin-bottom:40px; letter-spacing:5px; color: #333;">ҮДИЙН ХООЛНЫ ЦЭС</h2>
         <div class="week-btn" style="border-top: 5px solid #d4af37; color: #d4af37;" onclick="jumpTo(0)"><h3>WEEK 1</h3><small>1-р долоо хоног</small></div>
@@ -158,24 +161,11 @@
         })();
 
         const allMeals = [
-            { week: 1, type: 'intro' },
             { week: 1, day: "Даваа", name: "Ногооны зутан шөл, гоймонтой хуурга", cal: "640", p: "32г", f: "24г", c: "75г", fi: "10г", img: "mon1.png" },
             { week: 1, day: "Мягмар", name: "Гоймонтой шөл, нарийн мах", cal: "777", p: "38г", f: "32г", c: "87г", fi: "14г", img: "tue1.png" },
             { week: 1, day: "Лхагва", name: "Помидортой шөл, шарсан бугалаг", cal: "619", p: "34г", f: "19г", c: "82г", fi: "6г", img: "wed1.png" },
             { week: 1, day: "Пүрэв", name: "Ногоон сонгинотой хар шөл, пирожки", cal: "664", p: "31г", f: "17г", c: "100г", fi: "7г", img: "thu1.png" },
-            { week: 1, day: "Баасан", name: "Хөц будаатай шөл, мантууны хавчуурга", cal: "802", p: "33г", f: "23г", c: "119г", fi: "9г", img: "fri1.png" },
-            { week: 2, type: 'intro' },
-            { week: 2, day: "Даваа", name: "Брокколи шөл, тефтель", cal: "720", p: "37г", f: "24г", c: "91г", fi: "8г", img: "mon2.png" },
-            { week: 2, day: "Мягмар", name: "Хулууны зутан, төмсний хучмал", cal: "632", p: "31г", f: "24г", c: "76г", fi: "23г", img: "tue2.png" },
-            { week: 2, day: "Лхагва", name: "Бинтэй хар шөл, бройлер тахиа", cal: "797", p: "35г", f: "27г", c: "106г", fi: "7г", img: "wed2.png" },
-            { week: 2, day: "Пүрэв", name: "Борщ, бууз", cal: "768", p: "42г", f: "22г", c: "100г", fi: "9г", img: "thu2.png" },
-            { week: 2, day: "Баасан", name: "Сүүтэй будаа, гуляш", cal: "814", p: "27г", f: "25г", c: "126г", fi: "6г", img: "fri2.png" },
-            { week: 3, type: 'intro' },
-            { week: 3, day: "Даваа", name: "Баяжуулсан бантан, будаатай хуурга", cal: "640", p: "32г", f: "24г", c: "75г", fi: "10г", img: "mon3.png" },
-            { week: 3, day: "Мягмар", name: "Шар будаатай шөл, шпагетти", cal: "973", p: "49г", f: "25г", c: "140г", fi: "12г", img: "tue3.png" },
-            { week: 3, day: "Лхагва", name: "Бууцайны зутан, гуляш", cal: "857", p: "29г", f: "26г", c: "132г", fi: "13г", img: "wed3.png" },
-            { week: 3, day: "Пүрэв", name: "Тахиан махан шөл, бууцайтай мантуун бууз", cal: "634", p: "37г", f: "19г", c: "82г", fi: "7г", img: "thu3.png" },
-            { week: 3, day: "Баасан", name: "Ногоотой шөл, үхрийн махтай пицца", cal: "680", p: "35г", f: "23г", c: "85г", fi: "10г", img: "fri3.png" }
+            { week: 1, day: "Баасан", name: "Хөц будаатай шөл, мантууны хавчуурга", cal: "802", p: "33г", f: "23г", c: "119г", fi: "9г", img: "fri1.png" }
         ];
 
         let mainSwiper;
@@ -184,36 +174,29 @@
 
         function initAppStructure() {
             const wrapper = document.getElementById('swiperWrapper');
+            // Intro слайд нэмэх
+            wrapper.innerHTML += `<div class="swiper-slide intro-slide" data-week="1"><div class="intro-slide-content"><h1 class="intro-num">WEEK 1</h1><div class="intro-sub">1-Р ДОЛОО ХОНОГ</div></div></div>`;
+            
             allMeals.forEach((m, idx) => {
-                if(m.type === 'intro') {
-                    wrapper.innerHTML += `
-                    <div class="swiper-slide intro-slide" data-week="${m.week}">
-                        <div class="intro-slide-content">
-                            <h1 class="intro-num">WEEK ${m.week}</h1>
-                            <div class="intro-sub">${m.week}-Р ДОЛОО ХОНОГ</div>
+                wrapper.innerHTML += `
+                <div class="swiper-slide" data-week="1">
+                    <div class="slide-header"><h2 class="w-num">WEEK 1</h2><div class="d-name">${m.day}</div></div>
+                    <div class="food-wrap">
+                        <div class="f-name">${m.name}</div>
+                        <div class="img-container"><img src="${m.img}" class="food-img" loading="lazy" onerror="this.style.opacity='0.1'"><div class="cal-badge">${m.cal} KCAL</div></div>
+                    </div>
+                    <div class="glass-panel">
+                        <div class="n-row">
+                            <div class="n-box"><b>${m.p}</b><i>Уураг</i></div>
+                            <div class="n-box"><b>${m.f}</b><i>Өөх тос</i></div>
+                            <div class="n-box"><b>${m.c}</b><i>Нүүрс ус</i></div>
+                            <div class="n-box"><b>${m.fi}</b><i>Эслэг</i></div>
                         </div>
-                    </div>`;
-                } else {
-                    wrapper.innerHTML += `
-                    <div class="swiper-slide" data-week="${m.week}">
-                        <div class="slide-header"><h2 class="w-num">WEEK ${m.week}</h2><div class="d-name">${m.day}</div></div>
-                        <div class="food-wrap">
-                            <div class="f-name">${m.name}</div>
-                            <div class="img-container"><img src="${m.img}" class="food-img" loading="lazy" onerror="this.style.opacity='0.1'"><div class="cal-badge">${m.cal} KCAL</div></div>
-                        </div>
-                        <div class="glass-panel">
-                            <div class="n-row">
-                                <div class="n-box"><b>${m.p}</b><i>Уураг</i></div>
-                                <div class="n-box"><b>${m.f}</b><i>Өөх тос</i></div>
-                                <div class="n-box"><b>${m.c}</b><i>Нүүрс ус</i></div>
-                                <div class="n-box"><b>${m.fi}</b><i>Эслэг</i></div>
-                            </div>
-                            <div class="rating-container"><div class="rating-label">Үнэлгээ өгөх:</div><div class="star-row"><span class="star" onclick="rate(this, ${idx}, 1)">★</span><span class="star" onclick="rate(this, ${idx}, 2)">★</span><span class="star" onclick="rate(this, ${idx}, 3)">★</span><span class="star" onclick="rate(this, ${idx}, 4)">★</span><span class="star" onclick="rate(this, ${idx}, 5)">★</span></div></div>
-                            <textarea id="comment-${idx}" class="comment-box" placeholder="Сэтгэгдэл бичих..."></textarea>
-                            <button class="send-btn" onclick="submitData(${idx})">ИЛГЭЭХ</button>
-                        </div>
-                    </div>`;
-                }
+                        <div class="rating-container"><div class="rating-label">Үнэлгээ өгөх:</div><div class="star-row"><span class="star" onclick="rate(this, ${idx}, 1)">★</span><span class="star" onclick="rate(this, ${idx}, 2)">★</span><span class="star" onclick="rate(this, ${idx}, 3)">★</span><span class="star" onclick="rate(this, ${idx}, 4)">★</span><span class="star" onclick="rate(this, ${idx}, 5)">★</span></div></div>
+                        <textarea id="comment-${idx}" class="comment-box" placeholder="Сэтгэгдэл бичих..."></textarea>
+                        <button class="send-btn" onclick="submitData(${idx})">ИЛГЭЭХ</button>
+                    </div>
+                </div>`;
             });
         }
         initAppStructure();
@@ -226,11 +209,10 @@
                         const activeSlide = this.slides[this.activeIndex];
                         const week = activeSlide.getAttribute('data-week');
                         document.body.className = 'bg-w' + week;
-                        updateAura(week);
                         
                         clearTimeout(introTimer);
                         if (activeSlide.classList.contains('intro-slide')) {
-                            introTimer = setTimeout(() => { mainSwiper.slideNext(); }, 2000);
+                            introTimer = setTimeout(() => { mainSwiper.slideNext(); }, 3000);
                         }
                     }
                 }
@@ -250,7 +232,7 @@
             if(score === 0) { showToast("Та од дарж үнэлнэ үү"); return; }
             showToast("Хүлээн авлаа. Баярлалаа!");
             const scriptURL = 'https://script.google.com/macros/s/AKfycbyfcTDDujkQeVOkChIMm2PDyCgQnqL5CWUcTb3k0c3yjz_NWkWYFV_UUIMYIhiEvLAuSQ/exec'; 
-            fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ week: meal.week, day: meal.day, meal: meal.name, score: score, comment: comment }) });
+            fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ week: 1, day: meal.day, meal: meal.name, score: score, comment: comment }) });
         }
 
         function showToast(msg) {
@@ -259,33 +241,23 @@
             setTimeout(() => { toast.style.display = 'none'; }, 2500);
         }
 
-        function updateAura(week) {
-            let color = "#d4af37";
-            if(week == 2) color = "#e63946";
-            if(week == 3) color = "#4fc3f7";
-            const aura = document.getElementById('aura');
-            if(aura) aura.style.background = `radial-gradient(circle, ${color} 0%, transparent 60%)`;
-        }
-
         function jumpTo(index) {
             document.getElementById('weekSelector').style.display = 'none';
             document.querySelector('.swiper').style.display = 'block';
             document.getElementById('backBtn').style.display = 'flex';
             document.getElementById('bgMusic').play().catch(() => {});
             if(!mainSwiper) setupSwiper();
-            mainSwiper.update(); 
             mainSwiper.slideTo(index, 0);
-
-            const activeSlide = mainSwiper.slides[index];
+            
+            const activeSlide = mainSwiper.slides[0];
             if (activeSlide && activeSlide.classList.contains('intro-slide')) {
                 clearTimeout(introTimer);
-                introTimer = setTimeout(() => { mainSwiper.slideNext(); }, 2000);
+                introTimer = setTimeout(() => { mainSwiper.slideNext(); }, 3000);
             }
         }
 
         function showMenu() { document.getElementById('weekSelector').style.display = 'flex'; document.querySelector('.swiper').style.display = 'none'; document.getElementById('backBtn').style.display = 'none'; }
 
-        // Snow animation
         const canvas = document.getElementById('canvas-snow');
         const ctx = canvas.getContext('2d');
         let particles = [];
