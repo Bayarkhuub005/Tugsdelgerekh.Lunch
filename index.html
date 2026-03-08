@@ -50,30 +50,53 @@
         .intro-num { font-family: 'Cinzel'; font-size: 4.5rem; font-weight: 900; margin: 0; }
         .intro-sub { font-size: 1.2rem; letter-spacing: 2px; font-weight: 800; opacity: 0.5; margin-top: 10px; }
 
+        /* HEADER */
         .slide-header { text-align: center; padding-top: 20px; z-index: 50; opacity: 0; transform: translateY(-20px); transition: 0.8s ease 0.2s; }
         .swiper-slide-active .slide-header { opacity: 1; transform: translateY(0); }
         .w-num { font-family: 'Cinzel'; font-size: 1.3rem; letter-spacing: 7px; font-weight: 900; margin: 0; }
         .d-name { font-size: 0.9rem; letter-spacing: 4px; text-transform: uppercase; margin: 5px 0 0 0; opacity: 0.6; color: #333; }
 
-        /* 🟢 ХООЛНЫ НЭР - ДООШЛУУЛСАН */
+        /* ХООЛНЫ НЭР */
         .f-name { 
-            position: absolute; top: 13%; z-index: 250;
+            position: relative; margin-top: 15px; z-index: 250;
             font-size: 1.05rem; font-weight: 700; color: #000; 
             max-width: 320px; line-height: 1.3; text-align: center;
         }
 
-        /* ХООЛНЫ ЗУРАГ */
-        .food-wrap { position: relative; width: 100%; flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 150; margin-top: -10px; opacity: 0; transform: scale(0.85); transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.4s; }
+        /* 🟢 ХООЛНЫ ЗУРАГ - БАГА ЗЭРЭГ ДООШЛУУЛСАН (ЗАСВАР) */
+        .food-wrap { 
+            position: relative; width: 100%; flex: 1; 
+            display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            z-index: 150; 
+            margin-top: 15px; /* -10px байсныг 15px болгож доошлуулсан */
+            opacity: 0; transform: scale(0.85); 
+            transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.4s; 
+        }
         .swiper-slide-active .food-wrap { opacity: 1; transform: scale(1); }
         .img-container { position: relative; display: flex; justify-content: center; align-items: center; }
         .food-img { width: 90vw; max-width: 460px; filter: drop-shadow(0 30px 60px rgba(0,0,0,0.15)); animation: float 6s infinite ease-in-out; }
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
-        .cal-badge { position: absolute; right: 5%; bottom: 15%; z-index: 200; font-size: 0.75rem; font-weight: 800; letter-spacing: 1px; padding: 6px 15px; background: rgba(255,255,255,0.9); border-radius: 50px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 1px solid #eee; opacity: 0; transform: translateX(20px); transition: 0.6s ease 0.8s; }
+        /* 🟢 CALORIE BADGE - ДООШЛУУЛСАН (ЗАСВАР) */
+        .cal-badge { 
+            position: absolute; right: 5%; 
+            bottom: 8%; /* 15% байсныг 8% болгож доошлуулсан */
+            z-index: 200; font-size: 0.75rem; font-weight: 800; letter-spacing: 1px; padding: 6px 15px; 
+            background: rgba(255,255,255,0.9); border-radius: 50px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 1px solid #eee;
+            opacity: 0; transform: translateX(20px); transition: 0.6s ease 0.8s;
+        }
         .swiper-slide-active .cal-badge { opacity: 1; transform: translateX(0); }
 
         /* GLASS PANEL */
-        .glass-panel { width: 95%; max-width: 420px; padding: 20px; background: var(--glass); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); border: 1px solid var(--border); border-radius: 35px; margin-top: 10px; z-index: 10; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.05); margin-bottom: 25px; opacity: 0; transform: translateY(30px); transition: 0.8s ease 0.6s; }
+        .glass-panel { 
+            width: 95%; max-width: 420px; padding: 20px; 
+            background: var(--glass); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); 
+            border: 1px solid var(--border); border-radius: 35px; 
+            margin-top: -30px; /* -45px байсныг -30px болгож бага зэрэг доошлуулсан */
+            z-index: 10; text-align: center; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05); margin-bottom: 30px; 
+            opacity: 0; transform: translateY(30px); transition: 0.8s ease 0.6s; 
+        }
         .swiper-slide-active .glass-panel { opacity: 1; transform: translateY(0); }
 
         .n-row { display: flex; gap: 6px; margin-bottom: 20px; }
@@ -85,7 +108,7 @@
         .rating-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; color: #333; opacity: 0.6; }
         .star-row { display: flex; gap: 6px; }
         .star { font-size: 2.1rem; color: rgba(0,0,0,0.08); cursor: pointer; transition: 0.3s; }
-        .comment-box { width: 100%; background: rgba(255,255,255,0.6); border: 1px solid rgba(0,0,0,0.05); border-radius: 20px; padding: 12px 15px; font-family: 'Montserrat'; font-size: 0.85rem; color: #333; resize: none; outline: none; box-sizing: border-box; height: 45px; margin-bottom: 10px; }
+        .comment-box { width: 100%; background: rgba(255,255,255,0.6); border: 1px solid rgba(0,0,0,0.05); border-radius: 20px; padding: 12px 15px; font-family: 'Montserrat'; font-size: 0.85rem; color: #333; resize: none; outline: none; box-sizing: border-box; height: 55px; margin-bottom: 10px; }
         
         .send-btn { background: #fff; border: none; padding: 10px 25px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; }
         #customToast { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.8); color: white; padding: 15px 30px; border-radius: 50px; z-index: 9999; font-size: 0.9rem; font-weight: 600; display: none; backdrop-filter: blur(10px); animation: toastFade 0.5s ease; }
@@ -105,7 +128,6 @@
     <canvas id="canvas-snow"></canvas>
     <div id="customToast">Хүлээн авлаа. Баярлалаа!</div>
 
-    <!-- 1. SPLASH SCREEN -->
     <div id="splash">
         <div class="logo-container">
             <img src="logo.png" class="logo-img">
@@ -116,7 +138,6 @@
         </div>
     </div>
 
-    <!-- 2. WEEK SELECTOR -->
     <div id="weekSelector">
         <h2 style="font-family:'Cinzel'; margin-bottom:40px; letter-spacing:5px; color: #333;">ҮДИЙН ХООЛНЫ ЦЭС</h2>
         <div class="week-btn" style="border-top: 5px solid #d4af37; color: #d4af37;" onclick="jumpTo(0)"><h3>WEEK 1</h3><small>1-р долоо хоног</small></div>
@@ -146,7 +167,6 @@
             }, 1800); 
         })();
 
-        // 🟢 БҮХ 15 ХООЛНЫ ДАТА (restored)
         const allMeals = [
             { week: 1, type: 'intro', label: '1-Р ДОЛОО ХОНОГ' },
             { week: 1, day: "Даваа", name: "Ногооны зутан шөл, гоймонтой хуурга", cal: "640", p: "32г", f: "24г", c: "75г", fi: "10г", img: "mon1.png" },
@@ -266,7 +286,6 @@
             mainSwiper.update(); 
             mainSwiper.slideTo(index, 0);
 
-            // Intro слайд дээрх автомат шилжилтийг анх ороход идэвхжүүлэх
             const activeSlide = mainSwiper.slides[index];
             if (activeSlide && activeSlide.classList.contains('intro-slide')) {
                 clearTimeout(introTimer);
@@ -276,7 +295,7 @@
 
         function showMenu() { document.getElementById('weekSelector').style.display = 'flex'; document.querySelector('.swiper').style.display = 'none'; document.getElementById('backBtn').style.display = 'none'; }
 
-        // Snow Animation
+        // Snow animation
         const canvas = document.getElementById('canvas-snow');
         const ctx = canvas.getContext('2d');
         let particles = [];
