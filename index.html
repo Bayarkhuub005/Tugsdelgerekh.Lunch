@@ -223,7 +223,7 @@
                         
                         clearTimeout(introTimer);
                         if (activeSlide.classList.contains('intro-slide')) {
-                            introTimer = setTimeout(() => { mainSwiper.slideNext(); }, 3000);
+                            introTimer = setTimeout(() => { mainSwiper.slideNext(); }, 2000);
                         }
                     }
                 }
@@ -272,7 +272,7 @@
             const activeSlide = mainSwiper.slides[index];
             if (activeSlide && activeSlide.classList.contains('intro-slide')) {
                 clearTimeout(introTimer);
-                introTimer = setTimeout(() => { mainSwiper.slideNext(); }, 3000);
+                introTimer = setTimeout(() => { mainSwiper.slideNext(); }, 2000);
             }
         }
 
@@ -296,6 +296,7 @@
     </script>
 </body>
 </html>
+
 
 
 
